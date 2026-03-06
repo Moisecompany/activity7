@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Un estudiante pertenece a un grupo
+    public function group() {
+        return $this->belongsTo(Group::class);
+    }
 }

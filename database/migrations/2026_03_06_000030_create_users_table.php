@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // Nuevos campos
+            $table->enum('role', ['student', 'teacher', 'administrative'])->default('student');
+            $table->foreignId('group_id')->nullable()->constrained(); // Nullable porque los profes/admins pueden no tener grupo
+            
             $table->rememberToken();
             $table->timestamps();
         });
